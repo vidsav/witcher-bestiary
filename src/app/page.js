@@ -1,4 +1,5 @@
 import monstersData from '../../mosnters_new.json';
+import Image from "next/image";
 
 export default function Home() {
   const monsters = monstersData;
@@ -22,6 +23,7 @@ export default function Home() {
                 <p>{monster.name}</p>
                 <p>{monster.type}</p>
                 <p>{monster.desc}</p>
+                {monster.type === 'Beasts' ? <Image src={monster.image} alt={monster.name} height={200} width={200}/> : <p>No image found</p>}
             </div>
 
         ))}
