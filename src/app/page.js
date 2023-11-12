@@ -1,6 +1,6 @@
 import monstersData from '../../mosnters_new.json';
 import Image from "next/image";
-import Beast from "@/components/Beast";
+import BeastItem from "@/components/BeastItem";
 
 export default function Home() {
   const monsters = monstersData;
@@ -21,7 +21,7 @@ export default function Home() {
       <>
           <div className="flex flex-wrap">
               {monsters.map((monster) => (
-                  <Beast key={monster.name} monster={monster}/>
+                  <BeastItem key={monster.name} beast={monster}/>
               ))}
           </div>
       </>
