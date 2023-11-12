@@ -18,12 +18,12 @@ export default function Home() {
       return 0;
     });
   return (
-      <>
-          <div className="flex flex-wrap">
+      <div className="">
+          <div className="flex flex-wrap gap-4 p-8">
               {monsters.map((monster) => (
                   <BeastItem key={monster.name} beast={monster}/>
               ))}
           </div>
-      </>
+      </div>
   )
 }
