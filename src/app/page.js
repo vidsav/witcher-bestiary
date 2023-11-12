@@ -22,8 +22,8 @@ export default function Home() {
       <main>
           <div className="flex flex-wrap gap-4 p-8">
               {monsters.map((beast) => (
-                  <Link href={`/${beast.name}`}>
-                      <BeastItem key={beast.name} beast={beast}/>
+                  <Link key={beast.name} href={`/${beast.name}`}>
+                      <BeastItem beast={beast}/>
                   </Link>
               ))}
           </div>
