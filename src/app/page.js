@@ -1,5 +1,6 @@
 import monstersData from '../../mosnters_new.json';
 import Image from "next/image";
+import Beast from "@/components/Beast";
 
 export default function Home() {
   const monsters = monstersData;
@@ -18,15 +19,11 @@ export default function Home() {
     });
   return (
       <>
-        {monsters.map((monster) => (
-            <div key={monster.name}>
-                <p>{monster.name}</p>
-                <p>{monster.type}</p>
-                <p>{monster.desc}</p>
-                {monster.type === 'Beasts' ? <Image src={monster.image} alt={monster.name} height={200} width={200}/> : <p>No image found</p>}
-            </div>
-
-        ))}
+          <div className="flex flex-wrap">
+              {monsters.map((monster) => (
+                  <Beast key={monster.name} monster={monster}/>
+              ))}
+          </div>
       </>
   )
 }
