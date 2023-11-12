@@ -1,6 +1,7 @@
 import monstersData from '../../mosnters_new.json';
 import Image from "next/image";
 import BeastItem from "@/components/BeastItem";
+import {Link} from "@nextui-org/react";
 
 export default function Home() {
   const monsters = monstersData;
@@ -18,12 +19,14 @@ export default function Home() {
       return 0;
     });
   return (
-      <div className="">
+      <main>
           <div className="flex flex-wrap gap-4 p-8">
-              {monsters.map((monster) => (
-                  <BeastItem key={monster.name} beast={monster}/>
+              {monsters.map((beast) => (
+                  <Link href={`/${beast.name}`}>
+                      <BeastItem key={beast.name} beast={beast}/>
+                  </Link>
               ))}
           </div>
-      </div>
+      </main>
   )
 }
