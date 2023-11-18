@@ -18,7 +18,7 @@ export default function BeastItem({beast}) {
                 <h4 className="text-black font-semibold text-large">{beast.name}</h4>
             </CardHeader>
             <CardBody className="overflow-visible py-2">
-                {beast.type === 'Beasts' || beast.type === 'CursedOnes' ? <Image src={beast.image} alt={beast.name} height={200} width={200}/> : <p>No image found</p>}
+                {beast.image ? <Image src={beast.image} alt={beast.name} height={200} width={200}/> : <p>No image found</p>}
             </CardBody>
         </Card>
 

@@ -1,10 +1,59 @@
+'use client'
+
 import monstersData from '../../monsters_new.json';
 import Image from "next/image";
 import BeastItem from "@/components/BeastItem";
-import {Link} from "@nextui-org/react";
+import {Link, Tab, Tabs} from "@nextui-org/react";
 
 export default function Home() {
   const monsters = monstersData;
+  // const tabs = ['Beasts','Cursed Ones','Draconids','Elementa','Hybrids',"Insectoids","Necrophages","Ogroids","Relicts","Specters","Vampires"]
+  const tabs = [
+      {
+          id: "Beasts",
+          label: "Beasts",
+      },
+      {
+          id: "Cursed Ones",
+          label: "Cursed Ones",
+      },
+      {
+          id: "Draconids",
+          label: "Draconids",
+      },
+      {
+          id: "Elementa",
+          label: "Elementa",
+      },
+      {
+          id: "Hybrids",
+          label: "Hybrids",
+      },
+      {
+          id: "Insectoids",
+          label: "Insectoids",
+      },
+      {
+          id: "Necrophages",
+          label: "Necrophages",
+      },
+      {
+          id: "Ogroids",
+          label: "Ogroids",
+      },
+      {
+          id: "Relicts",
+          label: "Relicts",
+      },
+      {
+          id: "Specters",
+          label: "Specters",
+      },
+      {
+          id: "Vampires",
+          label: "Vampires",
+      }
+  ]
   monsters.sort((a, b) => {
       const nameA = a.type.toUpperCase(); // ignore upper and lowercase
       const nameB = b.type.toUpperCase(); // ignore upper and lowercase
@@ -20,13 +69,22 @@ export default function Home() {
     });
   return (
       <main>
-          <div className="flex flex-wrap gap-4 p-8">
-              {monsters.map((beast) => (
-                  <Link key={beast.name} href={`/${beast.id}`}>
-                      <BeastItem beast={beast}/>
-                  </Link>
-              ))}
-          </div>
+
+
+
+          <Tabs aria-label="Dynamic tabs" items={tabs}>
+              {(item) => (
+                  <Tab key={item.id} title={item.label} color="primary">
+                      <div className="flex flex-wrap gap-4 p-8">
+                          {monsters.filter(filterbeast => filterbeast.type === item.id).map((beast) => (
+                              <Link key={beast.name} href={`/${beast.id}`}>
+                                  <BeastItem beast={beast}/>
+                              </Link>
+                          ))}
+                      </div>
+                  </Tab>
+              )}
+          </Tabs>
       </main>
   )
 }
