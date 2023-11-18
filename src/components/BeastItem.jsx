@@ -1,7 +1,7 @@
 'use client'
 
-import Image from "next/image";
-import {Card, CardBody, CardHeader} from "@nextui-org/react";
+// import Image from "next/image";
+import {Card, CardBody, CardHeader, Image} from "@nextui-org/react";
 
 export default function BeastItem({beast}) {
 
