@@ -1,12 +1,15 @@
 'use client'
-
-import monstersData from '../../monsters_new.json';
 import Image from "next/image";
 import BeastItem from "@/components/BeastItem";
 import {Link, Tab, Tabs} from "@nextui-org/react";
 
-export default function Home() {
-  const monsters = monstersData;
+async function getMonsters(){
+    const response = await fetch(' http://localhost:4000/monsters', {});
+    return response.json();
+}
+
+export default async function Home() {
+  const monsters = await getMonsters();
   // const tabs = ['Beasts','Cursed Ones','Draconids','Elementa','Hybrids',"Insectoids","Necrophages","Ogroids","Relicts","Specters","Vampires"]
   const tabs = [
       {
@@ -69,9 +72,6 @@ export default function Home() {
     });
   return (
       <main>
-
-
-
           <Tabs aria-label="Dynamic tabs" items={tabs}>
               {(item) => (
                   <Tab key={item.id} title={item.label} color="primary">

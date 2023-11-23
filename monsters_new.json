@@ -1,4 +1,7 @@
-[
+
+
+{
+ "monsters":[
   {
     "id": "0",
     "name":"Bear",
@@ -1320,3 +1323,4 @@
     "image":"Bianco.png"
   }
 ]
+}

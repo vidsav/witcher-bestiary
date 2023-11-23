@@ -1,16 +1,19 @@
-import monstersData from '../../../monsters_new.json';
 import {Link, Image} from "@nextui-org/react";
 
+async function getMonsterDetails(id) {
+    const res = await fetch(`http://localhost:4000/monsters/${id}`, {})
+
+    return res.json()
+}
 
 export default async function Beast({params}){
-    const beast = monstersData.find(item => item.id === params.id);
-    console.log(beast);
+    const monster = await getMonsterDetails(params.id)
     return (
         <>
             <Link href="/">Back</Link>
-            <div>{beast.name}</div>
-            <div>{beast.desc}</div>
-            <Image src={beast.image} alt={beast.name} height={500} width={500}/>
+            <div>{monster.name}</div>
+            <div>{monster.desc}</div>
+            <Image src={monster.image} alt={monster.name} height={500} width={500}/>
         </>
     )
 }
