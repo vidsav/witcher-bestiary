@@ -1,26 +1,25 @@
-import { Inter } from 'next/font/google'
-import './globals.css'
-import {Providers} from "@/app/providers";
+import "@/styles/globals.css"
+import { Inter as FontSans } from "next/font/google"
 
-const inter = Inter({ subsets: ['latin'] })
+import { cn } from "../@/lib/utils"
 
-export const metadata = {
-  title: 'Witcher monsters',
-  description: 'Witcher monsters',
-}
+export const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    // <html lang="en">
-    //   <body className={inter.className}>{children}</body>
-    // </html>
-
-  <html lang="en" className='dark'>
-    <body>
-      <Providers>
-        {children}
-      </Providers>
-    </body>
-  </html>
+      <html lang="en" suppressHydrationWarning>
+      <head />
+      <body
+          className={cn(
+              "min-h-screen bg-background font-sans antialiased",
+              fontSans.variable
+          )}
+      >
+      ...
+      </body>
+      </html>
   )
 }
